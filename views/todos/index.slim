@@ -1,0 +1,15 @@
+h2 Your todolist ##{session[:id]}:
+
+form action="/todos" method="POST"
+    input type="text" name="todo" placeholder="New task"
+    input type="submit" value="Create!"
+
+ol
+    - todos.each do |todo|
+        li
+            p = todo["content"]
+            form method="POST" action="todos/#{todo["id"]}/delete"
+                input type="submit" value="Delete"
+            form method="POST" action="todos/#{todo["id"]}/edit"
+                input type="text" name="todo" placeholder="New name"
+                input type="submit" value="Update!"
