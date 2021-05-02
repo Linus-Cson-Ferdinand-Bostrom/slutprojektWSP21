@@ -1,0 +1,13 @@
+form action="/lists" method="POST"
+    input type="text" name="list" placeholder="New list"
+    input type="submit" value="Create!"
+
+ol
+    - lists.each do |list|
+        li
+            p = list["content"]
+            form method="POST" action="lists/#{list["id"]}/delete"
+                input type="submit" value="Delete"
+            form method="POST" action="lists/#{list["id"]}/edit"
+                input type="text" name="list" placeholder="New name"
+                input type="submit" value="Update!"
