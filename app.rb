@@ -62,11 +62,11 @@ get('/lists') do
 end
 
 post('/lists') do
-  id = session[:id]
+  id = session[:id].to_i
   list = params[:list]
   db = SQLite3::Database.new('db/slutprojektWSP21.db')
   db.results_as_hash = true
-  result = db.execute("INSERT INTO lists (content,user_id) VALUES (?,?)",list,id).first
+  result = db.execute("INSERT INTO lists (name,user_id) VALUES (?,?)",list,id).first
   redirect('/lists')
 end
 
