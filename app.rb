@@ -75,7 +75,7 @@ post('/lists/:id/edit') do
   list = params[:list]
   db = SQLite3::Database.new('db/slutprojektWSP21.db')
   db.results_as_hash = true
-  result = db.execute("UPDATE lists SET content=? WHERE id=?",list,id).first
+  result = db.execute("UPDATE lists SET name=? WHERE id=?",list,id).first
   redirect('/lists')
 end
 

@@ -4,10 +4,10 @@ form action="/lists" method="POST"
 
 ol
     - lists.each do |list|
-        li
-            p = list["content"]
-            form method="POST" action="lists/#{list["id"]}/delete"
-                input type="submit" value="Delete"
+        li  
+            h4 = list["name"]
             form method="POST" action="lists/#{list["id"]}/edit"
                 input type="text" name="list" placeholder="New name"
                 input type="submit" value="Update!"
+            form method="POST" action="lists/#{list["id"]}/delete"
+                input type="submit" value="Delete"
